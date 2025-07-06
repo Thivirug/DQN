@@ -2,8 +2,8 @@ import torch
 
 class DQN(torch.nn.Module):
     """
-        A DQN that takes "state_size" number of states as input and maps them into a probabilitiy 
-        distribution of actions of size "action_size" 
+        A DQN that takes "state_size" number of state information as input and maps them into a probabilitiy 
+        distribution of state action values (Q) of size "action_size" 
     """
     def __init__(self, state_size: int, action_size: int, n_hidden: int):
         super().__init__()
