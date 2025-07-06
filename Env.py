@@ -9,7 +9,9 @@ class CartPole():
         return gym.make(self.name)
 
     def info(self):
+        print("States: ", self.env.observation_space)
         print("State size: ", self.env.observation_space.shape[0])
+        print("Actions: ", self.env.action_space)
         print("Action size: ", self.env.action_space.n)
 
 env = CartPole("CartPole-v1")

@@ -1,7 +1,11 @@
 import torch
 
 class DQN(torch.nn.Module):
-    def __init__(self, state_size, action_size, n_hidden):
+    """
+        A DQN that takes "state_size" number of states as input and maps them into a probabilitiy 
+        distribution of actions of size "action_size" 
+    """
+    def __init__(self, state_size: int, action_size: int, n_hidden: int):
         super().__init__()
 
         self.l1 = torch.nn.Linear(
