@@ -1,6 +1,7 @@
 from Dqn import DQN
 import numpy as np
 from collections import deque
+import random
 
 class Agent:
     def __init__(self, state_size: int, action_size: int, n_hidden: int, memory_maxlen: int):
@@ -23,11 +24,13 @@ class Agent:
         """
         return DQN(self.state_size, self.action_size, self.n_hidden)
     
-    def store(self, curr_state, action, reward, nxt_state, done):
+    def update_exp(self, curr_state, action, reward, nxt_state, done):
         """
             Update experience replay.
         """
-        self.exp_replay.append(curr_state, action, reward, nxt_state, done)
+        self.exp_replay.append((curr_state, action, reward, nxt_state, done))
+
+    
 
 
     
