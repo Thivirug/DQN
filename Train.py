@@ -50,7 +50,6 @@ class Trainer:
 
             self.opt.step()
 
-
     def run_agent(self):
         """
             Run the agent in env.
