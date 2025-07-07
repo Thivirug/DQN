@@ -56,7 +56,7 @@ class Trainer:
             Run the agent in env.
         """
 
-        for ep in self.n_eps:
+        for ep in range(self.n_eps):
             # reset env
             state = self.env.reset()[0]
             total_reward = 0
