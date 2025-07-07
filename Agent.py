@@ -6,10 +6,10 @@ import torch
 import os
 
 class Agent:
-    def __init__(self, state_size: int, action_size: int, n_hidden: int, memory_maxlen: int, gamma: float, epsilon: float, epsilon_min: float, epsilon_decay: float, lr: float):
+    def __init__(self, state_size: int, action_size: int, n_hidden: int, memory_maxlen: int, gamma: float, epsilon: float, epsilon_min: float, epsilon_decay: float):
         # model args
-        self.state_size = state_size,
-        self.action_size = action_size,
+        self.state_size = state_size  
+        self.action_size = action_size  
         self.n_hidden = n_hidden
 
         # algorithm args
@@ -17,7 +17,6 @@ class Agent:
         self.epsilon = epsilon
         self.epsilon_min = epsilon_min
         self.epsilon_decay = epsilon_decay
-        self.lr = lr
 
         # experience replay 
         self.exp_replay = deque(maxlen = memory_maxlen)
@@ -39,7 +38,7 @@ class Agent:
         """
         self.target_model.load_state_dict(self.main_model.state_dict(), weights_only=True)
     
-    def _update_exp(self, curr_state, action, reward, nxt_state, done: bool):
+    def remember(self, curr_state, action, reward, nxt_state, done: bool):
         """
             Update experience replay.
         """
@@ -67,8 +66,29 @@ class Agent:
             return random.randrange(self.action_size)
         
         # exploit
-        q_values = self.main_model(torch.Tensor(state).float())
-        return torch.argmax(q_values[0]).item() # returns the indices of the max value in q_values batch
+        state_tensor = torch.Tensor(state).float().unsqueeze(0)  # Add batch dimension
+        q_values = self.main_model(state_tensor)
+        return torch.argmax(q_values[0]).item()  
     
 
-    
+    def replay(self, batch_size: int):
+        """
+            Return a batch of sample exp tuples from experience replay.
+        """
+        # sample exp tuples batch from memory
+        curr_states, actions, rewards, nxt_states, done = random.sample(self.exp_replay, batch_size)
+        
+        return torch.Tensor(curr_states).float(), actions, rewards, torch.Tensor(nxt_states).float(), done
+
+
+            
+
+
+
+
+
+
+
+
+
+

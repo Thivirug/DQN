@@ -2,8 +2,7 @@ import torch
 
 class DQN(torch.nn.Module):
     """
-        A DQN that takes "state_size" number of state information as input and maps them into a probabilitiy 
-        distribution of state action values (Q) of size "action_size" 
+        A DQN that takes "state_size" number of state information as input and maps them into state action values (Q) of size "action_size" 
     """
     def __init__(self, state_size: int, action_size: int, n_hidden: int):
         super().__init__()
@@ -27,12 +26,10 @@ class DQN(torch.nn.Module):
             out_features = action_size
         )
 
-        self.activation3 = torch.nn.Softmax()
-
     def forward(self, x):
         x = self.l1(x)
         x = self.activation1(x)
         x = self.l2(x)
         x = self.activation2(x)
         x = self.output(x)
-        return self.activation3(x)
+        return x  
