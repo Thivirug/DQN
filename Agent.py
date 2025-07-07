@@ -57,7 +57,7 @@ class Agent:
         """
         return self.main_model.load_state_dict(torch.load(filepath, weights_only=True))
 
-    def act(self, state):
+    def act(self, state: np.ndarray):
         """
             Choose an action based on epsilon greedy policy.
         """
@@ -68,7 +68,7 @@ class Agent:
         # exploit
         state_tensor = torch.Tensor(state).float().unsqueeze(0)  # Add batch dimension
         q_values = self.main_model(state_tensor)
-        return torch.argmax(q_values[0]).item()  
+        return torch.argmax(q_values[0]).item()  # !
     
 
     def replay(self, batch_size: int):
