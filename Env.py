@@ -14,5 +14,6 @@ class CartPole():
         print("Actions: ", self.env.action_space)
         print("Action size: ", self.env.action_space.n)
 
-env = CartPole("CartPole-v1")
-print(env.info())
+if __name__ == "__main__":
+    env = CartPole("CartPole-v1")
+    env.info()

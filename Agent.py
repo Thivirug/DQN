@@ -36,7 +36,7 @@ class Agent:
         """
             Copies weights of main network to target network.
         """
-        self.target_model.load_state_dict(self.main_model.state_dict(), weights_only=True)
+        self.target_model.load_state_dict(self.main_model.state_dict())
     
     def remember(self, curr_state, action, reward, nxt_state, done: bool):
         """
@@ -76,9 +76,16 @@ class Agent:
             Return a batch of sample exp tuples from experience replay.
         """
         # sample exp tuples batch from memory
-        curr_states, actions, rewards, nxt_states, done = random.sample(self.exp_replay, batch_size)
+        batch = random.sample(self.exp_replay, batch_size)
         
-        return torch.Tensor(curr_states).float(), actions, rewards, torch.Tensor(nxt_states).float(), done
+        # unpack the batch
+        curr_states = [e[0] for e in batch]
+        actions = [e[1] for e in batch]
+        rewards = [e[2] for e in batch]
+        nxt_states = [e[3] for e in batch]
+        done = [e[4] for e in batch]
+        
+        return torch.FloatTensor(curr_states), actions, rewards, torch.FloatTensor(nxt_states), done
     
     def eps_decay(self):
         """

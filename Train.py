@@ -33,7 +33,7 @@ class Trainer:
             self.opt.zero_grad()
 
             # get Q value using main network (y_pred)
-            Q_v_pred = self.agent.main_model(curr_state.unsqueeze(0))[0][action]
+            Q_v_pred = self.agent.main_model(curr_state.unsqueeze(0))[0][action].item()
 
             # calculate true Q value using target network (y_true)
             if done: 
