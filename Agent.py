@@ -79,6 +79,13 @@ class Agent:
         curr_states, actions, rewards, nxt_states, done = random.sample(self.exp_replay, batch_size)
         
         return torch.Tensor(curr_states).float(), actions, rewards, torch.Tensor(nxt_states).float(), done
+    
+    def eps_decay(self):
+        """
+            Decay epsilon.
+        """
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
 
 
             
