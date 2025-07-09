@@ -65,7 +65,7 @@ class Trainer:
             Run the agent in env.
         """
 
-        for ep in range(1,self.n_eps):
+        for ep in range(1,self.n_eps+1):
             # reset env
             state = self.env.reset()[0]
             
@@ -76,7 +76,7 @@ class Trainer:
 
             # --- agent's journey starts ---
             n = 500
-            for t in range(n):
+            for t in range(1, n+1):
                 # take an action
                 a = self.agent.act(state)
                 # update agent's env perception
