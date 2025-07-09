@@ -2,6 +2,8 @@
 from Train import Trainer
 from Agent import Agent
 from Env import CartPole
+import matplotlib
+matplotlib.use('TkAgg')  # Use TkAgg backend for plotting
 import matplotlib.pyplot as plt
 
 def plot_rewards(trainer_obj: Trainer):
