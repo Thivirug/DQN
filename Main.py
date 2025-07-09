@@ -17,6 +17,9 @@ def plot_rewards(trainer_obj: Trainer):
     plt.xlabel('Episode')
     plt.ylabel('Total Reward')
     plt.grid()
+
+    # save as image
+    plt.savefig("RL/DQN/total_rewards_per_episode.png")
     plt.show()
 
 if __name__ == "__main__":

@@ -19,7 +19,7 @@ def render_episode(agent, model_path, num_episodes):
             next_state = next_state.reshape(1, -1)
             total_reward += reward
             state = next_state
-            if truncated:
+            if truncated or terminated:
                 done = True
         print(f"Episode {episode + 1} reward: {total_reward}")
     env.close()
