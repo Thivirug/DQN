@@ -34,7 +34,7 @@ if __name__ == "__main__":
     agent = Agent(
         state_size=state_size,
         action_size=action_size,
-        n_hidden=24,
+        n_hidden=20,
         memory_maxlen=5000,
         gamma=0.99,
         epsilon=1.0,
@@ -46,12 +46,12 @@ if __name__ == "__main__":
     trainer = Trainer(
         agent=agent,
         env=env,
-        batch_size=64,
+        batch_size=256,
         n_episodes=600,
-        lr=0.001,
+        lr=0.01,
         optimizer="adam",
-        target_update_freq=4,
-        save_freq=100
+        target_update_freq=2,
+        save_freq=50
     )
 
     # train the agent

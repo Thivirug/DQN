@@ -1,5 +1,5 @@
 /Models
 __pycache__
-.png
-.jpg
-.jpeg
+*.png
+*.jpg
+*.jpeg
