@@ -40,5 +40,5 @@ agent = Agent(
 
 # Load the model and render episodes
 model_path = "RL/DQN/Models/FINAL_model.pt"
-# model_path = "./cartpole_model/DQN_old.keras"
+
 render_episode(agent, model_path, num_episodes=2)
