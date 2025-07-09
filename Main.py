@@ -1,9 +1,21 @@
 # run the agent in the environment and train it
 from Train import Trainer
 from Agent import Agent
-import gymnasium as gym
-import torch
 from Env import CartPole
+import matplotlib.pyplot as plt
+
+def plot_rewards(trainer_obj: Trainer):
+    rewards_history = trainer_obj.total_rewards_history
+    episodes = list(rewards_history.keys())
+    rewards = list(rewards_history.values())
+
+    plt.figure(figsize=(12, 6))
+    plt.plot(episodes, rewards, color='blue', marker='o', markersize=3)
+    plt.title('Total Rewards per Episode')
+    plt.xlabel('Episode')
+    plt.ylabel('Total Reward')
+    plt.grid()
+    plt.show()
 
 if __name__ == "__main__":
     # create the environment
@@ -17,7 +29,7 @@ if __name__ == "__main__":
     agent = Agent(
         state_size=state_size,
         action_size=action_size,
-        n_hidden=64,
+        n_hidden=24,
         memory_maxlen=5000,
         gamma=0.99,
         epsilon=1.0,
@@ -29,13 +41,16 @@ if __name__ == "__main__":
     trainer = Trainer(
         agent=agent,
         env=env,
-        batch_size=32,
-        n_episodes=1000,
+        batch_size=64,
+        n_episodes=600,
         lr=0.001,
         optimizer="adam",
-        target_update_freq=10,
+        target_update_freq=4,
         save_freq=100
     )
 
     # train the agent
     trainer.run_agent()
+
+    # plot the rewards
+    plot_rewards(trainer)

@@ -42,6 +42,11 @@ class Agent:
         """
             Update experience replay.
         """
+        # convert to tensor
+        curr_state = torch.tensor(curr_state, dtype=torch.float32)
+        nxt_state = torch.tensor(nxt_state, dtype=torch.float32)
+
+        # append to exp replay
         self.exp_replay.append((curr_state, action, reward, nxt_state, done))
 
     def save_model(self, filepath: os.PathLike):
@@ -66,8 +71,10 @@ class Agent:
             return random.randrange(self.action_size)
         
         # exploit
-        state_tensor = torch.Tensor(state).float().unsqueeze(0)  # Add batch dimension
+        state_tensor = torch.Tensor(state)
+        # print(f"State tensor: {state_tensor}")  # Debugging line to check state tensor
         q_values = self.main_model(state_tensor)
+        # print(f"Q-values: {q_values}")  # Debugging line to check Q-values
         return torch.argmax(q_values[0]).item()  # !
     
 
@@ -77,16 +84,9 @@ class Agent:
         """
         # sample exp tuples batch from memory
         batch = random.sample(self.exp_replay, batch_size)
+
+        return batch
         
-        # unpack the batch
-        curr_states = [e[0] for e in batch]
-        actions = [e[1] for e in batch]
-        rewards = [e[2] for e in batch]
-        nxt_states = [e[3] for e in batch]
-        done = [e[4] for e in batch]
-        
-        return torch.FloatTensor(curr_states), actions, rewards, torch.FloatTensor(nxt_states), done
-    
     def eps_decay(self):
         """
             Decay epsilon.
