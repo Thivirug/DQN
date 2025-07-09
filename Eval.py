@@ -1,5 +1,4 @@
 import gymnasium as gym
-from Agent import Agent
 
 def render_episode(agent, model_path, num_episodes):
     # Load the model
