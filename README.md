@@ -16,7 +16,10 @@
    ```bash
    python Main.py
    ```
-3. After training, evaluation is done automatically in the `Main.py` script. 
+3. After training, evaluation is done automatically in the `Main.py` script. Manually run the evaluation script if needed by copying the Agent object from `Main.py` and calling the `render_episode` function. Then,:
+   ```bash
+   python Eval.py
+   ```
 4. The trained model will be saved in the `Models` directory.
 5. You can modify the model path in `Main.py` to load a different model for evaluation.
 6. The training and evaluation results will be displayed in the console, and plots of the rewards will be generated using Matplotlib.
