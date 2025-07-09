@@ -60,7 +60,8 @@ class Agent:
         """
             Load DQN.
         """
-        return self.main_model.load_state_dict(torch.load(filepath, weights_only=True))
+        self.main_model.load_state_dict(torch.load(filepath, weights_only=True))
+        self.target_model.load_state_dict(torch.load(filepath, weights_only=True))
 
     def act(self, state: np.ndarray):
         """
@@ -71,14 +72,14 @@ class Agent:
             return random.randrange(self.action_size)
         
         # exploit
-        state_tensor = torch.Tensor(state)
+        state_tensor = torch.tensor(state, dtype=torch.float32)
         # print(f"State tensor: {state_tensor}")  # Debugging line to check state tensor
         q_values = self.main_model(state_tensor)
-        # print(f"Q-values: {q_values}")  # Debugging line to check Q-values
-        return torch.argmax(q_values[0]).item()  # !
+        #print(f"Q-values: {q_values}")  # Debugging line to check Q-values
+        return torch.argmax(q_values, dim=1).item()  # !
     
 
-    def replay(self, batch_size: int):
+    def sample_exp(self, batch_size: int):
         """
             Return a batch of sample exp tuples from experience replay.
         """

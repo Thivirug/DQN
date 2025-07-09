@@ -25,10 +25,10 @@ class Trainer:
             
     def train(self):
         """
-            Train the agent using experience replay.
+            Train the agent using the experience replay.
         """
         # get a batch of exp replays
-        exp_batch = self.agent.replay(self.bs)
+        exp_batch = self.agent.sample_exp(self.bs)
 
         # print(f"exp_batch type: {type(exp_batch)}")
         # print(f"exp_batch length: {len(exp_batch)}")
