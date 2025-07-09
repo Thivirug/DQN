@@ -1,1 +1,3 @@
-## A Double DQN written from scratch to solve the classic control Cartpole game in gymnasium
+# This project implements a Double DQN agent to solve the Cartpole environment from Gymnasium.
+
+* 

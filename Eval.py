@@ -24,21 +24,3 @@ def render_episode(agent, model_path, num_episodes):
         print(f"Episode {episode + 1} reward: {total_reward}")
     env.close()
 
-# Initializing saved model
-state_size = 4
-action_size = 2
-agent = Agent(
-        state_size=state_size,
-        action_size=action_size,
-        n_hidden=100,
-        memory_maxlen=5000,
-        gamma=0.99,
-        epsilon=0.0,
-        epsilon_min=0.01,
-        epsilon_decay=0.995
-    )
-
-# Load the model and render episodes
-model_path = "RL/DQN/Models/FINAL_model.pt"
-
-render_episode(agent, model_path, num_episodes=2)

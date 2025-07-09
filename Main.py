@@ -5,6 +5,7 @@ from Env import CartPole
 import matplotlib
 matplotlib.use('TkAgg')  # Use TkAgg backend for plotting
 import matplotlib.pyplot as plt
+from Eval import render_episode
 
 def plot_rewards(trainer_obj: Trainer):
     rewards_history = trainer_obj.total_rewards_history
@@ -59,3 +60,9 @@ if __name__ == "__main__":
 
     # plot the rewards
     plot_rewards(trainer)
+
+    # Load the model and render episodes
+    model_path = "RL/DQN/Models/FINAL_model.pt"
+
+    render_episode(agent, model_path, num_episodes=2)
+
