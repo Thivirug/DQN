@@ -20,6 +20,6 @@
    ```bash
    python Eval.py
    ```
-4. The trained model will be saved in the `Models` directory.
+4. The trained models will be saved in the `Models` directory.
 5. You can modify the model path in `Main.py` to load a different model for evaluation.
 6. The training and evaluation results will be displayed in the console, and plots of the rewards will be generated using Matplotlib.
