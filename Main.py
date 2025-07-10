@@ -5,7 +5,6 @@ from Env import Env
 import matplotlib
 matplotlib.use('TkAgg')  # Use TkAgg backend for plotting
 import matplotlib.pyplot as plt
-from Eval import render_episode
 
 def plot_rewards(trainer_obj: Trainer, env_name: str):
     rewards_history = trainer_obj.total_rewards_history
