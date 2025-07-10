@@ -14,6 +14,6 @@ class Env():
         print("Actions: ", self.env.action_space)
         print("Action size: ", self.env.action_space.n)
 
-if __name__ == "__main__":
-    env = Env("MountainCar-v0")
-    env.info()
+# if __name__ == "__main__":
+#     env = Env("MountainCar-v0")
+#     env.info()
