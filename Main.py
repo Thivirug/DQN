@@ -50,7 +50,7 @@ if __name__ == "__main__":
         agent=agent,
         env=env,
         batch_size=32,
-        n_episodes=2000,
+        n_episodes=1500,
         lr=0.001,
         optimizer="adam",
         target_update_freq=5,
