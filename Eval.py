@@ -1,9 +1,11 @@
 import gymnasium as gym
+from Agent import Agent
 
 def render_episode(agent, model_path, num_episodes):
     # Load the model
     agent.load_model(model_path)
     
+    # render env
     env = gym.make('CartPole-v1', render_mode='human')
 
     for episode in range(num_episodes):
@@ -23,3 +25,24 @@ def render_episode(agent, model_path, num_episodes):
         print(f"Episode {episode + 1} reward: {total_reward}")
     env.close()
 
+if __name__ == "__main__":
+    # get state and action sizes # ! Change hard coded values if a new environment is used
+    state_size = 4
+    action_size = 2
+
+    # create agent # ! Make sure to copy the exact agent instance used for training. epsilon value can be changed.
+    agent = Agent(
+        state_size=state_size,
+        action_size=action_size,
+        n_hidden=100,
+        memory_maxlen=2000,
+        gamma=0.99,
+        epsilon=0, # exploitation only during evaluation
+        epsilon_min=0.01,
+        epsilon_decay=0.995
+    )
+
+    # Load the model and render episodes
+    model_path = "RL/DQN/Models/FINAL_model.pt"
+
+    render_episode(agent, model_path, num_episodes=2)

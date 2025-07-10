@@ -61,8 +61,5 @@ if __name__ == "__main__":
     # plot the rewards
     plot_rewards(trainer)
 
-    # Load the model and render episodes
-    model_path = "RL/DQN/Models/FINAL_model.pt"
-
-    render_episode(agent, model_path, num_episodes=2)
+    
 
