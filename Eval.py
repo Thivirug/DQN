@@ -6,7 +6,8 @@ def render_episode(agent, model_path, num_episodes):
     agent.load_model(model_path)
     
     # render env
-    env = gym.make('CartPole-v1', render_mode='human')
+    ENV_NAME = 'CartPole-v1'
+    env = gym.make(ENV_NAME, render_mode='human')
 
     for episode in range(num_episodes):
         state, _ = env.reset()
@@ -43,6 +44,7 @@ if __name__ == "__main__":
     )
 
     # Load the model and render episodes
-    model_path = "RL/DQN/Models/cartpole/FINAL_model.pt"
+    ENV_DIR = 'cartpole'
+    model_path = f"RL/DQN/Models/{ENV_DIR}/FINAL_model.pt"
 
     render_episode(agent, model_path, num_episodes=2)

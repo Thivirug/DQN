@@ -1,7 +1,7 @@
 # run the agent in the environment and train it
 from Train import Trainer
 from Agent import Agent
-from Env import CartPole
+from Env import Env
 import matplotlib
 matplotlib.use('TkAgg')  # Use TkAgg backend for plotting
 import matplotlib.pyplot as plt
@@ -24,10 +24,11 @@ def plot_rewards(trainer_obj: Trainer, env_name: str):
     plt.show()
 
 if __name__ == "__main__":
-    MODEL_PATH = "RL/DQN/Models/cartpole" # ! change dir if a different env is used
+    ENV_NAME = "CartPole-v1" # ! change name if a different env is used
+    MODEL_PATH = f"RL/DQN/Models/{ENV_NAME}" 
 
     # create the environment
-    env = CartPole("CartPole-v1").env
+    env = Env(ENV_NAME).env
 
     # get state and action sizes
     state_size = env.observation_space.shape[0]
@@ -62,7 +63,7 @@ if __name__ == "__main__":
     trainer.run_agent()
 
     # plot the rewards
-    plot_rewards(trainer, "cartpole")
+    plot_rewards(trainer, ENV_NAME)
 
     
 
