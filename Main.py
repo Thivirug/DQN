@@ -24,6 +24,8 @@ def plot_rewards(trainer_obj: Trainer):
     plt.show()
 
 if __name__ == "__main__":
+    MODEL_PATH = "RL/DQN/Models/cartpole" # ! change dir if a different env is used
+
     # create the environment
     env = CartPole("CartPole-v1").env
 
@@ -52,7 +54,8 @@ if __name__ == "__main__":
         lr=0.001,
         optimizer="adam",
         target_update_freq=5,
-        save_freq=100
+        save_freq=100,
+        model_save_path=MODEL_PATH
     )
 
     # train the agent

@@ -5,7 +5,7 @@ import os
 import numpy as np
 
 class Trainer:
-    def __init__(self, agent: Agent, env: gymnasium.Env, batch_size: int, n_episodes: int, lr: float, optimizer: torch.optim.Optimizer, target_update_freq: int, save_freq: int, model_save_path: str = "RL/DQN/Models"):
+    def __init__(self, agent: Agent, env: gymnasium.Env, batch_size: int, n_episodes: int, lr: float, optimizer: torch.optim.Optimizer, target_update_freq: int, save_freq: int, model_save_path: str):
         self.agent = agent
         self.env = env
         self.bs = batch_size

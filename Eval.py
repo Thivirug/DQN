@@ -43,6 +43,6 @@ if __name__ == "__main__":
     )
 
     # Load the model and render episodes
-    model_path = "RL/DQN/Models/FINAL_model.pt"
+    model_path = "RL/DQN/Models/cartpole/FINAL_model.pt"
 
     render_episode(agent, model_path, num_episodes=2)
