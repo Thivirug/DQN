@@ -61,12 +61,12 @@ if __name__ == "__main__":
     agent = Agent(
         state_size=state_size,
         action_size=action_size,
-        n_hidden=200,
+        n_hidden=50,
         memory_maxlen=2000,
-        gamma=0.99,
-        epsilon=0,
+        gamma=0.95,
+        epsilon=1.0,
         epsilon_min=0.001,
-        epsilon_decay=0.995
+        epsilon_decay=0.999
     )
 
     # Load the model and render episodes

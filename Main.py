@@ -92,23 +92,23 @@ if __name__ == "__main__":
     agent = Agent(
         state_size=state_size,
         action_size=action_size,
-        n_hidden=200,
+        n_hidden=50,
         memory_maxlen=2000,
-        gamma=0.99,
+        gamma=0.95,
         epsilon=1.0,
         epsilon_min=0.001,
-        epsilon_decay=0.995
+        epsilon_decay=0.999
     )
 
     # create trainer
     trainer = Trainer(
         agent=agent,
         env=env,
-        batch_size=32,
-        n_episodes=500,
-        lr=0.0001,
+        batch_size=64,
+        n_episodes=2000,
+        lr=0.001,
         optimizer="adam",
-        target_update_freq=5,
+        target_update_freq=4,
         save_freq=100,
         model_save_path=MODEL_PATH
     )
