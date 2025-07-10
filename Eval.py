@@ -61,10 +61,10 @@ if __name__ == "__main__":
     agent = Agent(
         state_size=state_size,
         action_size=action_size,
-        n_hidden=50,
+        n_hidden=10,
         memory_maxlen=2000,
-        gamma=0.95,
-        epsilon=1.0,
+        gamma=0.99,
+        epsilon=0,
         epsilon_min=0.001,
         epsilon_decay=0.999
     )

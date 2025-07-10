@@ -92,9 +92,9 @@ if __name__ == "__main__":
     agent = Agent(
         state_size=state_size,
         action_size=action_size,
-        n_hidden=50,
+        n_hidden=10,
         memory_maxlen=2000,
-        gamma=0.95,
+        gamma=0.99,
         epsilon=1.0,
         epsilon_min=0.001,
         epsilon_decay=0.999
@@ -104,9 +104,9 @@ if __name__ == "__main__":
     trainer = Trainer(
         agent=agent,
         env=env,
-        batch_size=64,
-        n_episodes=2000,
-        lr=0.001,
+        batch_size=16,
+        n_episodes=500,
+        lr=0.0001,
         optimizer="adam",
         target_update_freq=4,
         save_freq=100,
