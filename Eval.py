@@ -44,7 +44,7 @@ if __name__ == "__main__":
     )
 
     # Load the model and render episodes
-    ENV_DIR = 'cartpole'
-    model_path = f"RL/DQN/Models/{ENV_DIR}/FINAL_model.pt"
+    ENV_NAME = 'CartPole-v1'
+    model_path = f"RL/DQN/Models/{ENV_NAME}/FINAL_model.pt"
 
     render_episode(agent, model_path, num_episodes=2)
