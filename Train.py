@@ -60,7 +60,7 @@ class Trainer:
 
             self.opt.step()
 
-    def run_agent(self):
+    def run_agent(self, n: int):
         """
             Run the agent in env.
         """
@@ -75,7 +75,6 @@ class Trainer:
             total_reward = 0
 
             # --- agent's journey starts ---
-            n = 500
             for t in range(1, n+1):
                 # take an action
                 a = self.agent.act(state)
