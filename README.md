@@ -1,4 +1,4 @@
-# This project implements a Double DQN agent to solve the Cartpole environment from Gymnasium.
+# This project implements a Double DQN agent to solve Classic Control games in Gymnasium.
 
 * The agent is trained using the Double DQN algorithm (***Coded from scratch***), which uses a neural network to approximate the Q-values for each action in a given state.
 * The agent is trained on the Cartpole-v1 environment, which is a classic control problem where the goal is to balance a pole on a cart.
