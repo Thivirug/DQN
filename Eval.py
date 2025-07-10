@@ -71,6 +71,6 @@ if __name__ == "__main__":
 
     # Load the model and render episodes
     ENV_NAME = 'MountainCar-v0'
-    model_path = f"RL/DQN/Models/{ENV_NAME}/model_EP_1300.pt"
+    model_path = f"RL/DQN/Models/{ENV_NAME}/FINAL_model.pt"
 
     render_episode(agent, model_path, num_episodes=2, env_name=ENV_NAME)
