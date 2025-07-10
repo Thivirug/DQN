@@ -7,7 +7,7 @@ matplotlib.use('TkAgg')  # Use TkAgg backend for plotting
 import matplotlib.pyplot as plt
 from Eval import render_episode
 
-def plot_rewards(trainer_obj: Trainer):
+def plot_rewards(trainer_obj: Trainer, env_name: str):
     rewards_history = trainer_obj.total_rewards_history
     episodes = list(rewards_history.keys())
     rewards = list(rewards_history.values())
@@ -20,7 +20,7 @@ def plot_rewards(trainer_obj: Trainer):
     plt.grid()
 
     # save as image
-    plt.savefig("RL/DQN/total_rewards_per_episode.png")
+    plt.savefig(f"RL/DQN/{env_name.upper()} -> total_rewards_per_episode.png")
     plt.show()
 
 if __name__ == "__main__":
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     trainer.run_agent()
 
     # plot the rewards
-    plot_rewards(trainer)
+    plot_rewards(trainer, "cartpole")
 
     
 
